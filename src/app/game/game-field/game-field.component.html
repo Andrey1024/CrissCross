@@ -1,0 +1,8 @@
+<svg 
+    *ngIf="game"
+    (click)="click($event)"
+    width="500" 
+    height="500" 
+    [attr.viewBox]="'0,0,' + game.dimX + ',' + game.dimY" >
+    <g game-grid [dimX]="game.dimX" [dimY]="game.dimY"></g>
+</svg>
