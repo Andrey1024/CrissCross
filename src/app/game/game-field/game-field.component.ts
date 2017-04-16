@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CrissCoss, Point } from '../shared/game.model';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Point } from '../shared/game.model';
 
 @Component({
     selector: 'game-field',
@@ -7,11 +7,27 @@ import { CrissCoss, Point } from '../shared/game.model';
     styleUrls: ['./game-field.component.css']
 })
 export class GameFieldComponent {
-    @Input() game: CrissCoss;
-    @Output() move: EventEmitter<Point> = new EventEmitter();
+    @Input() moves: Point[];
+    @Input() dimX = 15;
+    @Input() dimY = 15;
+    @Output() clicks: EventEmitter<Point> = new EventEmitter();
+
+    @ViewChild('field') field: ElementRef;
 
     click(event: MouseEvent) {
+        let width = (<SVGElement>this.field.nativeElement).clientWidth;
+        let height = (<SVGElement>this.field.nativeElement).clientHeight;
+        let cellSize = width / this.dimX;
+        let x = Math.floor(event.offsetX / cellSize);
+        let y = Math.floor(event.offsetY / cellSize);
+        this.clicks.emit(new Point(x, y));
+    }
 
-        this.move.emit(new Point(10, 10));
+    get crisses() {
+        return this.moves.filter((v, i) => !(i % 2))
+    }
+
+    get crosses() {
+        return this.moves.filter((v, i) => i % 2);
     }
 }

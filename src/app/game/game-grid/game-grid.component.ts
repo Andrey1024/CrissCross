@@ -7,8 +7,8 @@ import { NgFor } from '@angular/common';
     styleUrls: ['./game-grid.component.css']
 })
 export class GameGridComponent implements OnChanges {
-    @Input() dimX: number = 10;
-    @Input() dimY: number = 10;
+    @Input() dimX: number;
+    @Input() dimY: number;
 
     xIterator = [];
     yIterator = [];
