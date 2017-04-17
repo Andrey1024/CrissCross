@@ -7,6 +7,7 @@ import { GameRoutingModule } from './game-routing.module';
 import { CrissCrossComponent } from './criss-cross/criss-cross.component';
 import { CrissComponent } from './criss/criss.component';
 import { CrossComponent } from './cross/cross.component';
+import { WinLineComponent } from './win-line/win-line.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { CrossComponent } from './cross/cross.component';
         GameGridComponent,
         CrissCrossComponent,
         CrissComponent,
-        CrossComponent
+        CrossComponent,
+        WinLineComponent
     ]
 })
 export class GameModule { }

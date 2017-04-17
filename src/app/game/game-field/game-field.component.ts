@@ -1,16 +1,21 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Point } from '../shared/game.model';
+import { Component, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Point, Line } from '../shared/game.model';
 
 @Component({
     selector: 'game-field',
     templateUrl: './game-field.component.html',
-    styleUrls: ['./game-field.component.css']
+    styleUrls: ['./game-field.component.css'],
+    inputs: ['crisses', 'crosses', 'dimX', 'dimY', 'winLine'],
+    outputs: ['clicks']
 })
 export class GameFieldComponent {
-    @Input() moves: Point[];
-    @Input() dimX = 15;
-    @Input() dimY = 15;
-    @Output() clicks: EventEmitter<Point> = new EventEmitter();
+    crisses: Point[];
+    crosses: Point[];
+    winLine: Line;
+    dimX = 15;
+    dimY = 15;
+
+    clicks: EventEmitter<Point> = new EventEmitter();
 
     @ViewChild('field') field: ElementRef;
 
@@ -21,13 +26,5 @@ export class GameFieldComponent {
         let x = Math.floor(event.offsetX / cellSize);
         let y = Math.floor(event.offsetY / cellSize);
         this.clicks.emit(new Point(x, y));
-    }
-
-    get crisses() {
-        return this.moves.filter((v, i) => !(i % 2))
-    }
-
-    get crosses() {
-        return this.moves.filter((v, i) => i % 2);
     }
 }

@@ -1,5 +1,5 @@
 .criss {
-    stroke-linecap: round;
+    fill: none;
     stroke-width: 0.2;
-    stroke: blue;
+    stroke: red;
 }

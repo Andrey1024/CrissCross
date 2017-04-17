@@ -16,6 +16,6 @@ export class CrissCrossComponent {
     }
 
     click(pos: Point) {
-        this.game.moves.push(pos);
+        this.game.addMove(pos);
     }
 }

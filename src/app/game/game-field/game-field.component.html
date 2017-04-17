@@ -3,8 +3,10 @@
     (click)="click($event)"
     width="500" 
     height="500" 
-    [attr.viewBox]="'0,0,' + dimX + ',' + dimY" >
+    [attr.viewBox]="'0,0,' + dimX + ',' + dimY"
+>
     <g game-grid [dimX]="dimX" [dimY]="dimY"></g>
     <g criss [crisses]="crisses"></g>
     <g cross [crosses]="crosses"></g>
+    <g win-line [winLine]="winLine" *ngIf="winLine"></g>
 </svg>

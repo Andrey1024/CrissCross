@@ -1,5 +1,5 @@
 .cross {
-    fill: none;
+    stroke-linecap: round;
     stroke-width: 0.2;
-    stroke: red;
+    stroke: blue;
 }

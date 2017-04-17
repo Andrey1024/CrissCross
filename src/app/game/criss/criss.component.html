@@ -1,18 +1,6 @@
-<svg:g
-    *ngFor="let criss of crisses"
->
-    <svg:line
-        class="criss"
-        [attr.x1]="criss.x + 0.2"
-        [attr.x2]="criss.x + 0.8"
-        [attr.y1]="criss.y + 0.8"
-        [attr.y2]="criss.y + 0.2"
-    />
-    <svg:line 
-        class="criss"
-        [attr.x1]="criss.x + 0.2"
-        [attr.x2]="criss.x + 0.8"
-        [attr.y2]="criss.y + 0.8"
-        [attr.y1]="criss.y + 0.2"
-    />
-</svg:g>
+<svg:circle *ngFor="let criss of crisses"
+    class="criss"
+    [attr.cx]="criss.x + 0.5"
+    [attr.cy]="criss.y + 0.5"
+    r="0.3"
+/>

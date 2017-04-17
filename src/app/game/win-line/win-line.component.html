@@ -1,0 +1,8 @@
+<svg:line
+    class="win-line"
+    *ngIf="winLine"
+    [attr.x1]="winLine.first.x + 0.5"
+    [attr.x2]="winLine.last.x + 0.5"
+    [attr.y1]="winLine.first.y + 0.5"
+    [attr.y2]="winLine.last.y + 0.5"
+/>

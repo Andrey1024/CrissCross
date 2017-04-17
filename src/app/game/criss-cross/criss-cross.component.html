@@ -1,3 +1,10 @@
 <div *ngIf="game">
-    <game-field [moves]="game.moves" [dimX]="game.dimX" [dimY]="game.dimY" (clicks)="click($event)"></game-field>
+    <game-field
+        [crisses]="game.crisses"
+        [crosses]="game.crosses"
+        [dimX]="game.dimX"
+        [dimY]="game.dimY"
+        [winLine]="game.winLine"
+        (clicks)="click($event)">
+    </game-field>
 </div>
