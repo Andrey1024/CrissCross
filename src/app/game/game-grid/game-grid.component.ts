@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges} from '@angular/core';
-import { NgFor } from '@angular/common';
 
 @Component({
     selector: '[game-grid]',

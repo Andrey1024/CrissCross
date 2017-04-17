@@ -1,4 +1,5 @@
-import { Point, CrissCoss } from './game.model';
+import { CrissCoss } from './game.model';
+import { Point } from './point.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()

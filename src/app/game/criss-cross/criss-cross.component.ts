@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Point, CrissCoss } from '../shared/game.model';
+import { CrissCoss } from '../shared/game.model';
+import { Point } from '../shared/point.model';
 import { GameService } from '../shared/game.service';
 
 @Component({
