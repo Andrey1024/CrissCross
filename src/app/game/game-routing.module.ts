@@ -5,7 +5,7 @@ import { CrissCrossComponent } from './criss-cross/criss-cross.component';
 
 const appRoutes: Routes = [
     {
-        path: 'game',
+        path: '',
         component: CrissCrossComponent
     }
 ]
