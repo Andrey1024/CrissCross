@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Point } from '../shared/point.model';
+import { Point } from '../../models/point.model';
 
 @Component({
     selector: '[criss]',

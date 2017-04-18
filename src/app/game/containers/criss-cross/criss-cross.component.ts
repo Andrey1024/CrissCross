@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CrissCoss } from '../shared/game.model';
-import { Point } from '../shared/point.model';
-import { GameService } from '../shared/game.service';
+import { CrissCoss } from '../../models/game.model';
+import { Point } from '../../models/point.model';
+import { GameService } from '../../services/game.service';
 
 @Component({
     selector: 'criss-cross',
@@ -13,7 +13,6 @@ export class CrissCrossComponent {
     game: CrissCoss;
 
     constructor(private gameService: GameService) {
-        this.gameService.newGame().then(game => this.game = game);
     }
 
     click(pos: Point) {

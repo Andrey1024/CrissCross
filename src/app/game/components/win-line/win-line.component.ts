@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Line } from '../shared/line.model';
+import { Line } from '../../models/line.model';
 
 @Component({
     selector: '[win-line]',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { Point } from '../shared/point.model';
-import { Line } from '../shared/line.model';
+import { Point } from '../../models/point.model';
+import { Line } from '../../models/line.model';
 
 @Component({
     selector: 'game-field',
