@@ -21,8 +21,9 @@ export class GameFieldComponent {
     @ViewChild('field') field: ElementRef;
 
     click(event: MouseEvent) {
-        let width = (<SVGElement>this.field.nativeElement).clientWidth;
-        let height = (<SVGElement>this.field.nativeElement).clientHeight;
+        let bbox = (<SVGElement>this.field.nativeElement).getBoundingClientRect();
+        let width = bbox.width;
+        let height = bbox.height;
         let cellSize = width / this.dimX;
         let x = Math.floor(event.offsetX / cellSize);
         let y = Math.floor(event.offsetY / cellSize);

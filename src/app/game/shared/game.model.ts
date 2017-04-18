@@ -71,8 +71,6 @@ export class CrissCoss {
             }
         }
 
-        this.__winLine = added.find(line => line.length == 5);
-        if (this.winLine) return;
-
+        this.__winLine = added.find(line => line.length >= 5);
     }
 }
