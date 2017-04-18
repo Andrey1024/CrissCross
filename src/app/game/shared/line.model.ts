@@ -64,9 +64,9 @@ export class Line {
     }
 
     static merge(...line: Line[]): Line {
-        let retLine = new Line(line[0].first);
-        let sum = line[0].points.concat(...line[1].points);
-        sum.forEach(point => retLine.addPoint(point));
+        let sum = line[0].points.concat(...line[1].points).sort((a, b) => a.y - b.y).sort((a, b) => a.x - b.x);
+        let retLine = new Line(sum[0]);
+        sum.slice(1).forEach(point => retLine.addPoint(point));
         return retLine;
     }
 }
