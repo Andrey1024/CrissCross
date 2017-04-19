@@ -1,10 +1,11 @@
-<div *ngIf="game">
+<div>
     <game-field
-        [crisses]="game.crisses"
-        [crosses]="game.crosses"
-        [dimX]="game.dimX"
-        [dimY]="game.dimY"
-        [winLine]="game.winLine"
-        (clicks)="click($event)">
+        [crisses]="crisses | async"
+        [crosses]="crosses | async"
+        [dimX]="dimX"
+        [dimY]="dimY"
+        [winLine]="winLine | async"
+        (clicks)="onClick.next($event)">
     </game-field>
+    <button (click)="reset()">Restart</button>
 </div>

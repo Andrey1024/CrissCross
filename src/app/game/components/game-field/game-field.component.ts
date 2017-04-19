@@ -27,6 +27,6 @@ export class GameFieldComponent {
         let cellSize = width / this.dimX;
         let x = Math.floor(event.offsetX / cellSize);
         let y = Math.floor(event.offsetY / cellSize);
-        this.clicks.emit(new Point(x, y));
+        this.clicks.emit({x: x, y: y});
     }
 }

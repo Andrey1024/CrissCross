@@ -1,19 +1,49 @@
-import { CrissCoss } from '../models/game.model';
+import { Game, GetMoveResult, MoveResult } from '../models/game.model';
 import { Point } from '../models/point.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { Line } from '../models/line.model';
+import { CrissCoss } from '../models/game-logic/game-instance';
 
 @Injectable()
 export class GameService {
-    crisses: Observable<Point[]>;
-    crosses: Observable<Point[]>;
-    winLine: Observable<Line>;
+    private gameInstanse = new CrissCoss(15, 15);
 
-
-    newGame(): Promise<CrissCoss> {
+    isEmpty(point: Point): boolean {
+        return this.gameInstanse.isEmpty(point);
     }
 
-    move(pos: Point) {
+    isEnded(): boolean {
+        return this.gameInstanse.isEnded();
+    }
+
+    move(point: Point): Observable<MoveResult> {
+        const result = new Subject();
+
+        setTimeout(() => {
+            result.next(this.gameInstanse.addMove(point));
+        });
+
+        return result;
+    }
+
+    resetGame(): Observable<{}> {
+        const result = new Subject();
+        
+        setTimeout(() => {
+            this.gameInstanse = new CrissCoss(15, 15);
+            result.next();
+        });
+
+        return result.asObservable();
+    }
+
+    getAiMove(): Promise<GetMoveResult> {
+        return;
+    }
+
+    getEnemyMove(): Promise<GetMoveResult> {
+        return;
     }
 }
