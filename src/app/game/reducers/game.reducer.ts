@@ -23,26 +23,26 @@ export function reducer(state: State = initialState, action: game.Actions) {
     switch (action.type) {
         case game.MOVE:
             if (state.gameState == 'playing') {
-                return Object.assign({}, state, { waiting: true });
+                return {...state, waiting: true };
             } else {
                 return state;
             }
         case game.ADD_MOVE:
-            return Object.assign({}, state, {
+            return {...state,
                 moves: state.moves.map((p, i) => i == payload.player ? p.concat(payload.point) : p),
                 waiting: false,
                 player: payload.nextPlayer,
                 gameState: payload.ended ? 'ended' : 'playing'
-            })
+            };
         case game.END_GAME:
-            return Object.assign({}, state, {
+            return {...state,
                 winLine: payload,
                 gameState: 'ended'
-            })
+            };
         case game.RESET_GAME:
-            return Object.assign({}, initialState, { waiting: true });
+            return {...initialState, waiting: true };
         case game.CANCEL_MOVE:
-            return Object.assign({}, state, { waiting: false });
+            return {...state, waiting: false }; 
         default:
             return state;
     }
@@ -56,6 +56,6 @@ export const getPlayer = (state: State) => state.player;
 
 export const getWaiting = (state: State) => state.waiting;
 
-export const getGameState =(state: State) => state.gameState;
+export const getGameState = (state: State) => state.gameState;
 
 export const getWinLine = (state: State) => state.winLine;
