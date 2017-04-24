@@ -1,11 +1,19 @@
-<div>
-    <game-field
-        [crisses]="crisses | async"
-        [crosses]="crosses | async"
-        [dimX]="dimX"
-        [dimY]="dimY"
-        [winLine]="winLine | async"
-        (clicks)="onClick.next($event)">
-    </game-field>
-    <button (click)="reset()">Restart</button>
+<div class="criss-cross">
+    <div class="side">
+
+    </div>
+    <div class="game-container">
+        <game-field
+            [crisses]="crisses$ | async"
+            [crosses]="crosses$ | async"
+            [dimX]="dimX"
+            [dimY]="dimY"
+            [winLine]="winLine$ | async"
+            (clicks)="onClick.next($event)">
+        </game-field>
+        <toolbox (reset)="reset.next()"></toolbox>
+    </div>
+    <div class="side">
+        <player [player]="player$ | async" [waiting]="waiting$ | async"></player>
+    </div>
 </div>

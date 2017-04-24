@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { 
+    MdButtonModule,
+    MdProgressSpinnerModule,
+    MdCardModule
+ } from '@angular/material';
+
 import { GameService } from './services/game.service';
 
 import { GameFieldComponent } from './components/game-field/game-field.component';
@@ -10,18 +16,23 @@ import { CrissCrossComponent } from './containers/criss-cross/criss-cross.compon
 import { CrissComponent } from './components/criss/criss.component';
 import { CrossComponent } from './components/cross/cross.component';
 import { WinLineComponent } from './components/win-line/win-line.component';
+import { ToolboxComponent } from './components/toolbox/toolbox.component';
+import { PlayerComponent } from './components/player/player.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { reducer, initialState } from './reducers/game.reducer';
+import { reducer } from './reducers';
 import { GameEffects } from './effects/game.effect';
 
 @NgModule({
     imports: [
         CommonModule,
         GameRoutingModule,
-        StoreModule.provideStore(reducer, initialState),
+        MdButtonModule,
+        MdCardModule,
+        MdProgressSpinnerModule,
+        StoreModule.provideStore(reducer),
         EffectsModule.run(GameEffects)
     ],
     declarations: [
@@ -30,7 +41,9 @@ import { GameEffects } from './effects/game.effect';
         CrissCrossComponent,
         CrissComponent,
         CrossComponent,
-        WinLineComponent
+        WinLineComponent,
+        ToolboxComponent,
+        PlayerComponent
     ],
     providers: [
         GameService

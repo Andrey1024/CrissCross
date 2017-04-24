@@ -1,0 +1,6 @@
+<md-card class="player-container">
+    <div>{{ (player ? "Crisses" : "Crosses") + " move"}}</div>
+    <div *ngIf="waiting">
+        <md-spinner></md-spinner>
+    </div>
+</md-card>

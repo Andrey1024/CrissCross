@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Line } from '../models/line.model';
-import { CrissCoss } from '../models/game-logic/game-instance';
+import { CrissCross } from '../models/game-logic/criss-cross';
+import { AI } from '../models/game-logic/ai';
 
 @Injectable()
 export class GameService {
-    private gameInstanse = new CrissCoss(15, 15);
+    private gameInstanse = new CrissCross(15, 15);
+    private ai = new AI();
 
     isEmpty(point: Point): boolean {
         return this.gameInstanse.isEmpty(point);
@@ -19,7 +21,7 @@ export class GameService {
     }
 
     move(point: Point): Observable<MoveResult> {
-        const result = new Subject();
+        const result = new Subject<MoveResult>();
 
         setTimeout(() => {
             result.next(this.gameInstanse.addMove(point));
@@ -32,15 +34,25 @@ export class GameService {
         const result = new Subject();
         
         setTimeout(() => {
-            this.gameInstanse = new CrissCoss(15, 15);
+            this.gameInstanse = new CrissCross(15, 15);
             result.next();
         });
 
         return result.asObservable();
     }
 
-    getAiMove(): Promise<GetMoveResult> {
-        return;
+    getAiMove(): Observable<GetMoveResult> {
+        const result = new Subject<GetMoveResult>();
+
+        setTimeout(() => {
+            const move = this.ai.getMove(this.gameInstanse);
+            result.next({
+                move: move,
+                result: this.gameInstanse.addMove(move)
+            });
+        });
+
+        return result;
     }
 
     getEnemyMove(): Promise<GetMoveResult> {
